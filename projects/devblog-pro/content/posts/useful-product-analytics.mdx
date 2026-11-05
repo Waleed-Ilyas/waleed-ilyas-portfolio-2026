@@ -1,0 +1,46 @@
+## Begin with the product question
+
+Analytics plans often start with a list of events. A better first step is to write the questions the team needs to answer. For example: where do people stop during onboarding, how long does it take to finish a setup, or which features are used after the first week?
+
+When a question is clear, an event model can stay small. Each event should describe a meaningful action, include only the properties needed to answer the question, and use consistent naming. Avoid creating events for every click just because the system can collect them.
+
+## Model a journey with stable events
+
+A simple onboarding flow might use events such as `onboarding_started`, `workspace_created`, and `first_invitation_sent`. These events describe product states the team can act on. A button-specific event such as `blue_button_clicked` becomes difficult to interpret after the interface changes.
+
+Use a stable identifier for the event schema and document the meaning of each property. If a property changes type or meaning, version the schema or introduce a new field. Quietly changing an event can make historical reports invalid.
+
+## Collect less and define access
+
+Product analytics does not require collecting names, email addresses, message text, or precise location by default. Prefer pseudonymous identifiers and coarse properties. Exclude secrets and free-form content. Define who can access raw events and how long they are retained.
+
+Privacy should be part of the implementation, not a note added after the tracking plan is complete. Ask whether a property is necessary, whether the product can answer the question with aggregated data, and whether the user can opt out where required by the product and applicable rules.
+
+## Separate event delivery from the interface
+
+The UI can call a small analytics adapter, but product features should continue to work if analytics is unavailable. The adapter can validate known event names, remove disallowed properties, and buffer events when a request fails. It should never block a primary user action while waiting for a metrics service.
+
+```ts
+type ProductEvent =
+  | { name: "onboarding_started"; properties: { flowVersion: string } }
+  | { name: "workspace_created"; properties: { memberCount: number } };
+
+function track(event: ProductEvent) {
+  if (!analyticsEnabled) return;
+  analyticsQueue.push({ ...event, timestamp: Date.now() });
+}
+```
+
+The typed union makes event names and properties discoverable in code. A production adapter would also need a clear delivery and retention policy; this example does not send data anywhere.
+
+## Validate events before trusting reports
+
+Instrument a small number of events and verify them in a development environment before using them in a decision. Check that repeated renders do not send duplicates, that retries do not inflate counts, and that event properties have the documented type. Compare reported events with expected user flows.
+
+Dashboards should show definitions and caveats alongside numbers. A conversion rate can change because the product changed, because tracking changed, or because the eligible population changed. The chart alone cannot tell which explanation is correct.
+
+## Keep the dashboard tied to decisions
+
+Each metric should connect to a decision or a question. Remove charts that no one uses to make a choice. Prefer a small view with clear definitions over a broad dashboard that invites interpretation without context.
+
+Good product analytics is a disciplined feedback loop: ask a precise question, collect the minimum useful signal, validate the implementation, and review the result with its limitations. The goal is better product decisions, not more events.

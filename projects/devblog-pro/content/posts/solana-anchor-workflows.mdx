@@ -1,0 +1,50 @@
+## Treat the instruction boundary as a trust boundary
+
+An on-chain program receives accounts and data from a caller. The program must verify that those inputs satisfy the assumptions of the instruction before it changes state. A client-side form can make a transaction easier to construct, but it cannot establish that the accounts are valid.
+
+With Anchor, account constraints make many of these assumptions visible in the instruction context. Check ownership, signer requirements, seeds, relationships, and mutability. For checks that depend on application rules, keep the validation close to the state transition and return a specific program error.
+
+## Model account state before writing instructions
+
+Start by listing the states an account can enter and the operations that move it between them. A listing, for example, might be draft, active, completed, or cancelled. Write down which authority can trigger each transition and which fields change. This prevents instructions from quietly allowing invalid combinations.
+
+Account layouts are also a compatibility boundary. Add fields with a plan for allocation and migration. If a program uses a version field, validate it and define how older accounts are handled. Avoid assuming that a program upgrade automatically changes every account already stored on the network.
+
+## Test failures as carefully as successful calls
+
+A program test should verify the happy path and the meaningful rejection paths. Test missing signatures, incorrect ownership, invalid seeds, insufficient balances, duplicate operations, and boundary values. After each expected failure, verify that the state is unchanged.
+
+Tests should use deterministic keypairs and fixtures where possible. Keep the test's setup understandable so a failure points to the behavior under test, rather than a large deployment script. A compact example might assert both the returned error and the persisted account fields:
+
+```ts
+await expect(
+  program.methods
+    .cancelListing()
+    .accounts({ listing: listingKey, seller: otherWallet.publicKey })
+    .signers([otherWallet])
+    .rpc(),
+).to.be.rejectedWith("UnauthorizedSeller");
+
+const listing = await program.account.listing.fetch(listingKey);
+expect(listing.status).to.equal("active");
+```
+
+The exact testing API depends on the Anchor and assertion-library versions. The essential check is that a rejected transaction did not produce the state change the test was meant to prevent.
+
+## Make client transactions understandable
+
+Wallet clients should show users what they are being asked to sign. Display the action, token, amount, destination, and any available fee estimate before the wallet prompt. A pending indicator should remain visible until the transaction reaches a clear state, and the interface should link to an explorer only after it has a transaction signature.
+
+A transaction can be submitted and still fail during confirmation. Distinguish wallet cancellation, submission failure, confirmation failure, and success. Do not tell the user an operation completed merely because the wallet returned a signature.
+
+## Keep local and production environments separate
+
+Use a local validator for repeatable program tests and development. Keep development keypairs out of production workflows, and do not commit wallet secrets or provider credentials. Test cluster configuration should be explicit so that a UI cannot silently submit to an unintended network.
+
+Before a mainnet launch, review program authority, upgrade policy, account sizing, rent behavior, transaction limits, and failure recovery. High-value programs need independent review and a deployment plan that accounts for the consequences of an irreversible transaction.
+
+## Build an observable release path
+
+Record the program ID, build artifacts, source revision, and deployment environment for each release. Monitor transaction failures and program logs, but avoid sending wallet information or user data to analytics without a clear reason and an appropriate disclosure.
+
+The workflow is simple to describe: model the state, validate the accounts, test the rejection paths, explain transactions, and separate local development from production. Doing those steps consistently makes a Solana program easier to maintain and safer to use.

@@ -1,0 +1,83 @@
+{
+  "courses": [
+    {
+      "id": "react",
+      "title": "Interfaces that feel effortless",
+      "teacher": "Avery Morgan",
+      "category": "Design",
+      "lessons": [
+        "Accessible interface basics",
+        "Layout and composition",
+        "Color and contrast",
+        "Component states",
+        "Design critique"
+      ]
+    },
+    {
+      "id": "systems",
+      "title": "Systems thinking for product teams",
+      "teacher": "Nadia Rahman",
+      "category": "Product",
+      "lessons": [
+        "Define the product question",
+        "Map a user journey",
+        "Prioritize evidence",
+        "Plan a small experiment",
+        "Share the decision"
+      ]
+    },
+    {
+      "id": "typescript",
+      "title": "TypeScript beyond the basics",
+      "teacher": "Jordan Lee",
+      "category": "Development",
+      "lessons": [
+        "Advanced types",
+        "Narrowing values",
+        "Generics in practice",
+        "Model API responses",
+        "Safe refactoring"
+      ]
+    },
+    {
+      "id": "writing",
+      "title": "Writing for thoughtful products",
+      "teacher": "Ibrahim Ali",
+      "category": "Product",
+      "lessons": [
+        "Find the reader goal",
+        "Structure a useful guide",
+        "Write clear headings",
+        "Explain interface states",
+        "Edit for plain language"
+      ]
+    },
+    {
+      "id": "motion",
+      "title": "Motion that explains, not distracts",
+      "teacher": "Sofia Reyes",
+      "category": "Design",
+      "lessons": [
+        "Motion principles",
+        "Timing and easing",
+        "Reduced motion",
+        "Transitions as feedback",
+        "Review a prototype"
+      ]
+    },
+    {
+      "id": "testing",
+      "title": "Reliable front-end testing",
+      "teacher": "Kai Thompson",
+      "category": "Development",
+      "lessons": [
+        "Testing strategy",
+        "Component tests",
+        "Browser flows",
+        "Keyboard checks",
+        "Reliable fixtures"
+      ]
+    }
+  ],
+  "enrollments": []
+}

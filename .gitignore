@@ -1,0 +1,15 @@
+node_modules/
+.next/
+out/
+.data/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+.env*
+!.env.example
+*.log
+.DS_Store
+.vercel/
+.netlify/
+EXECUTION-PLAN.md
+portfolio-headless-review.png

@@ -1,0 +1,226 @@
+{
+  "users": [
+    {
+      "id": "user-1",
+      "name": "Maya Chen",
+      "handle": "mayacreates",
+      "bio": "Creative practice"
+    },
+    {
+      "id": "user-2",
+      "name": "Leo Park",
+      "handle": "leopark",
+      "bio": "Design systems"
+    },
+    {
+      "id": "user-3",
+      "name": "Amara Okafor",
+      "handle": "amarao",
+      "bio": "Product research"
+    },
+    {
+      "id": "user-4",
+      "name": "Jon Bell",
+      "handle": "jonbuilds",
+      "bio": "Product design"
+    },
+    {
+      "id": "user-5",
+      "name": "Noor Hussain",
+      "handle": "noorcodes",
+      "bio": "Frontend development"
+    },
+    {
+      "id": "user-6",
+      "name": "Sofia Ruiz",
+      "handle": "sofiaruiz",
+      "bio": "Research"
+    },
+    {
+      "id": "user-7",
+      "name": "Evan Kim",
+      "handle": "evanmakes",
+      "bio": "Indie making"
+    },
+    {
+      "id": "user-8",
+      "name": "Aisha Rahman",
+      "handle": "aishadesigns",
+      "bio": "Design engineering"
+    },
+    {
+      "id": "user-9",
+      "name": "Mateo Silva",
+      "handle": "mateocodes",
+      "bio": "Backend engineering"
+    },
+    {
+      "id": "user-10",
+      "name": "Priya Nair",
+      "handle": "priyanair",
+      "bio": "Technical writing"
+    }
+  ],
+  "posts": [
+    {
+      "id": "post-1",
+      "handle": "mayacreates",
+      "body": "A useful prototype answers one question clearly.",
+      "topic": "Product thinking",
+      "likes": 20,
+      "comments": []
+    },
+    {
+      "id": "post-2",
+      "handle": "leopark",
+      "body": "Keep examples close to the component they explain.",
+      "topic": "Design systems",
+      "likes": 23,
+      "comments": []
+    },
+    {
+      "id": "post-3",
+      "handle": "amarao",
+      "body": "Run the smallest test that can challenge the assumption.",
+      "topic": "Research",
+      "likes": 26,
+      "comments": []
+    },
+    {
+      "id": "post-4",
+      "handle": "jonbuilds",
+      "body": "Short reviews work when everyone knows which decision is open.",
+      "topic": "Team practice",
+      "likes": 29,
+      "comments": []
+    },
+    {
+      "id": "post-5",
+      "handle": "noorcodes",
+      "body": "A good default can remove a whole page from the setup guide.",
+      "topic": "Frontend",
+      "likes": 32,
+      "comments": []
+    },
+    {
+      "id": "post-6",
+      "handle": "sofiaruiz",
+      "body": "Write down what you observed before naming what it might mean.",
+      "topic": "Research",
+      "likes": 35,
+      "comments": []
+    },
+    {
+      "id": "post-7",
+      "handle": "evanmakes",
+      "body": "A decision log helps old assumptions retire gracefully.",
+      "topic": "Product thinking",
+      "likes": 38,
+      "comments": []
+    },
+    {
+      "id": "post-8",
+      "handle": "aishadesigns",
+      "body": "Visible focus is part of the design, including on dark surfaces.",
+      "topic": "Accessibility",
+      "likes": 41,
+      "comments": []
+    },
+    {
+      "id": "post-9",
+      "handle": "mateocodes",
+      "body": "Clear errors give a caller a safe next step.",
+      "topic": "Engineering",
+      "likes": 44,
+      "comments": []
+    },
+    {
+      "id": "post-10",
+      "handle": "priyanair",
+      "body": "The README is easier to write while the setup is still fresh.",
+      "topic": "Developer tools",
+      "likes": 47,
+      "comments": []
+    },
+    {
+      "id": "post-11",
+      "handle": "omarf",
+      "body": "Keyboard testing reveals missing instructions surprisingly quickly.",
+      "topic": "Accessibility",
+      "likes": 50,
+      "comments": []
+    },
+    {
+      "id": "post-12",
+      "handle": "lenaf",
+      "body": "A planning session should leave fewer open questions.",
+      "topic": "Team practice",
+      "likes": 53,
+      "comments": []
+    },
+    {
+      "id": "post-13",
+      "handle": "theobuilds",
+      "body": "Keep examples that surprised you; they become a useful reference.",
+      "topic": "Creative practice",
+      "likes": 56,
+      "comments": []
+    },
+    {
+      "id": "post-14",
+      "handle": "mayacreates",
+      "body": "Scope gets clearer when the smallest useful version is written down.",
+      "topic": "Product thinking",
+      "likes": 59,
+      "comments": []
+    },
+    {
+      "id": "post-15",
+      "handle": "leopark",
+      "body": "Each design token should have a reason and a practical example.",
+      "topic": "Design systems",
+      "likes": 62,
+      "comments": []
+    },
+    {
+      "id": "post-16",
+      "handle": "amarao",
+      "body": "A good interview prompt asks for a real story, not a prediction.",
+      "topic": "Research",
+      "likes": 65,
+      "comments": []
+    },
+    {
+      "id": "post-17",
+      "handle": "jonbuilds",
+      "body": "One artifact and one question can make a review more focused.",
+      "topic": "Team practice",
+      "likes": 68,
+      "comments": []
+    },
+    {
+      "id": "post-18",
+      "handle": "noorcodes",
+      "body": "Put the accessible behavior in the component defaults.",
+      "topic": "Frontend",
+      "likes": 71,
+      "comments": []
+    },
+    {
+      "id": "post-19",
+      "handle": "sofiaruiz",
+      "body": "Separate evidence from interpretation in research notes.",
+      "topic": "Research",
+      "likes": 74,
+      "comments": []
+    },
+    {
+      "id": "post-20",
+      "handle": "evanmakes",
+      "body": "Keep experiments small enough to learn from in a day.",
+      "topic": "Product thinking",
+      "likes": 77,
+      "comments": []
+    }
+  ]
+}

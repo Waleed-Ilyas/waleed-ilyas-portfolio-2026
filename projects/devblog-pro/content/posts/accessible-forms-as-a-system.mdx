@@ -1,0 +1,40 @@
+# Accessible Forms as a Product System
+
+Forms sit at an awkward boundary. The product asks a person to provide information, and the interface has to explain what is needed, check it, and help recover when something goes wrong. Treating accessibility as a final pass often means those pieces are designed separately.
+
+## Start with the user's task
+
+Write down what someone is trying to complete and the information needed for that task. Then remove anything that does not help them finish it. A shorter form is easier to scan, easier to validate, and easier to maintain.
+
+Each field needs a visible label. Placeholder text is not a replacement: it disappears as the value is entered and can have weak contrast. If a field has a format or constraint, explain it before the person submits. For example, a date field can state the expected order and provide a properly labeled control.
+
+## Make the error path part of the happy path
+
+Validation should help people repair a value without losing work. Keep entered values when a form fails, identify the problem in text, and explain how to correct it. Color can reinforce an error, but it cannot carry the message alone.
+
+For a longer form, show a concise summary near the top and link each issue to its field. Put the field-level message beside the control and associate it programmatically. After submission, move focus to the summary or first invalid field so keyboard and screen reader users can find the next action.
+
+Do not validate so aggressively that the person is interrupted while typing. Validate on blur or submit, and clear the error when the value becomes valid. For server errors, say whether the information was saved and what is safe to do next. Avoid asking someone to repeat work because the service had a temporary problem.
+
+## Test the flow without a mouse
+
+Tab through the form in a sensible order. Confirm that every control has a visible focus state and that custom widgets support the keyboard interactions people expect. Check the form at narrow widths and at increased zoom; labels and errors should wrap without hiding the control.
+
+Use an automated checker to find common markup issues, then inspect the actual flow with a keyboard and a screen reader. Automation can confirm that a label exists. It cannot tell you whether the instructions make sense or whether an error is understandable.
+
+## Turn good decisions into defaults
+
+A shared field component can encode label placement, help text, error association, and focus styling. Keep the component small enough that product teams can still choose an appropriate input type and write specific instructions. A design system should reduce repeated mistakes, not flatten distinct tasks into one generic pattern.
+
+Add examples for the empty, focused, invalid, disabled, and successful states. When a new form is built, designers and developers can review the same states rather than making assumptions from a static screenshot.
+
+## A practical review checklist
+
+- Every control has a persistent, visible label.
+- Required fields and formats are explained before submission.
+- Errors identify the field, describe the issue, and offer a correction.
+- The form works by keyboard and at high zoom.
+- Failed submissions preserve the person's work.
+- Success and service failure are announced clearly.
+
+Accessible forms are not a separate interface. They are forms that make the task, state, and next step clear to more people.

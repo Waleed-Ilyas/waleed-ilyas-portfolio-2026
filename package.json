@@ -1,0 +1,41 @@
+{
+  "name": "waleed-ilyas-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "projects/*"
+  ],
+  "scripts": {
+    "dev": "next dev",
+    "lint": "eslint .",
+    "build": "next build",
+    "start": "next start",
+    "format:check": "prettier --check app projects package.json tsconfig.json next.config.mjs eslint.config.mjs README.md EXECUTION-PLAN.md"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
+    "gsap": "^3.15.1",
+    "next": "^16.4.5",
+    "nodemailer": "^10.3.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.2",
+    "@types/nodemailer": "^8.0.2",
+    "@types/react": "^19.2.3",
+    "@types/react-dom": "^19.2.2",
+    "@types/three": "^0.187.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.5",
+    "prettier": "^3.9.10",
+    "typescript": "5.7.2"
+  },
+  "overrides": {
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "^11.0.1"
+    }
+  }
+}

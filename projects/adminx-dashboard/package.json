@@ -1,0 +1,26 @@
+{
+  "name": "adminx-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3001",
+    "build": "next build",
+    "start": "next start --port 3001",
+    "lint": "eslint app src"
+  },
+  "dependencies": {
+    "@tanstack/react-table": "^8.21.3",
+    "lucide-react": "^0.468.0",
+    "next": "^16.4.5",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "recharts": "^3.10.1",
+    "zustand": "^5.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.2.3",
+    "@types/react-dom": "^19.2.2",
+    "typescript": "^5.7.2"
+  }
+}

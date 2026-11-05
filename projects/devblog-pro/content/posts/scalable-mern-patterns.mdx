@@ -1,0 +1,71 @@
+## Start with clear boundaries
+
+Scalability is often discussed as a traffic problem, but the first pressure many teams feel is change. A small application becomes difficult to extend when every feature reaches into the same routes, models, and utility files. Before adding infrastructure, make the responsibilities visible.
+
+Keep request parsing, validation, business rules, and persistence separate enough that each can be understood on its own. The goal is not to create layers for their own sake. It is to make a change to one feature less likely to break another feature that happens to share the same route handler.
+
+One practical structure is to group code by product capability:
+
+```text
+src/
+  features/
+    projects/
+      project.routes.ts
+      project.service.ts
+      project.repository.ts
+      project.schema.ts
+  shared/
+    errors/
+    logging/
+```
+
+This arrangement gives a team a place to look for behavior. If a capability becomes more complex, it can gain tests or a separate worker without forcing a full rewrite of the application.
+
+## Make data access explicit
+
+MongoDB gives a team flexible documents, but flexibility does not remove the need for a data model. Decide which fields are required, which values are allowed, and which references need an index. Validate input at the boundary and validate important invariants again in the service that owns the operation.
+
+Repository functions should make their query shape apparent. A list endpoint should select only the fields it needs, apply a stable sort, and paginate with a cursor or another strategy suited to the expected volume. Returning every matching document and filtering in application memory is simple at first, then becomes a hidden cost.
+
+Index decisions should follow real query patterns. An index helps a known filter or sort, but each additional index also affects storage and write work. Start with the operations the product actually performs, inspect query plans, and record why an index exists. Avoid adding indexes based on field names alone.
+
+## Keep API contracts boring
+
+The Express boundary should translate HTTP details into a small service call. Validate parameters and payloads, authenticate and authorize the request, then return a consistent response. A shared error handler can map known domain errors to stable status codes without leaking stack traces or database messages.
+
+```ts
+router.patch("/:projectId", async (request, response, next) => {
+  try {
+    const input = updateProjectSchema.parse(request.body);
+    const project = await projectService.update({
+      actorId: request.user.id,
+      projectId: request.params.projectId,
+      input,
+    });
+
+    response.status(200).json({ data: project });
+  } catch (error) {
+    next(error);
+  }
+});
+```
+
+The example keeps the route readable and makes it clear that authorization belongs to the operation. A role check in the browser is useful for the interface, but it is not a security boundary.
+
+## Add caching only after measuring
+
+Caching can reduce repeated work, but it adds a consistency problem. Before adding Redis, check whether the database query is already fast, whether the response can be paginated, and whether a short-lived in-process cache is enough. If a shared cache is justified, define the key, expiry, invalidation behavior, and acceptable staleness together.
+
+Do not cache a response that varies by user under a key that omits user identity or access scope. Do not cache authorization results across tenants. Cache design is part of access control and data correctness, not just performance tuning.
+
+## Design for failure and observe the right things
+
+External services fail, connections time out, and clients retry. Use explicit timeouts and bounded retries for operations that are safe to repeat. For writes, an idempotency key can prevent duplicate side effects when the client does not know whether a request succeeded.
+
+Logs should help an operator trace a request without copying secrets or unnecessary personal data. A request identifier, route, duration, and outcome are often more useful than logging the full request body. Metrics should track latency and error rates around the operations users care about.
+
+## Grow the system in small steps
+
+There is no universal threshold at which a MERN application should become microservices. A modular monolith can serve a large product while preserving straightforward local development and transactional boundaries. Split a capability when the team has a concrete reason, such as independent scaling, fault isolation, or a deployment cadence that differs from the rest of the system.
+
+The durable pattern is to make boundaries visible, measure real bottlenecks, and keep failure behavior explicit. That lets a team improve the system without buying complexity in advance.

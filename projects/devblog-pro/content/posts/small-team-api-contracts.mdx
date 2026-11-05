@@ -1,0 +1,37 @@
+# API Contracts for Small Teams
+
+An API contract is a shared agreement about what a request accepts and what a response means. Small teams benefit from that agreement even when the service has only a few routes. The goal is not a large specification; it is fewer surprises when the browser and server change independently.
+
+## Define the boundary first
+
+Start with a user action, such as creating a task. List the fields the browser must send, the fields the server owns, and the states the interface needs to show. A client may submit a title and due date. The server should assign an identifier and creation timestamp.
+
+This separation prevents the browser from being treated as an authority for values the service should control. It also makes it easier to replace a local store with a database later without changing what the UI expects.
+
+## Make invalid input predictable
+
+Use the same validation at the boundary for every caller. Reject missing or malformed data with a clear status code and a small error body. Avoid returning implementation details such as database paths, stack traces, or raw exceptions.
+
+For example, an invalid task title can return a validation error that identifies the field and gives a short message. A missing task can return not found. The UI can then show a useful message without inspecting server internals.
+
+## Choose response shapes for the interface
+
+Return the fields the interface needs to render a state, but do not expose internal records wholesale. Keep naming and nullability consistent. If a list is paginated, describe the next cursor or page in the response. If an operation can be retried safely, document how duplicate requests behave.
+
+Small examples are often enough: one successful request, one validation failure, and one missing-resource response. Keep them next to the route or in the README so a contributor can try the contract quickly.
+
+## Evolve without breaking callers
+
+When a field changes, find every consumer before changing the response. Adding an optional field is usually easier than renaming or removing one. If a breaking change is necessary, make the migration explicit and update the client and examples together.
+
+Types can reduce duplication when both sides share a codebase, but they do not replace runtime validation. A network request can contain anything, regardless of what TypeScript says. Validate incoming JSON before using it.
+
+## Test the agreement at the boundary
+
+Exercise the route with valid input, empty input, malformed JSON, unknown identifiers, and unexpected content types. Check that failure responses are safe and stable. A small set of boundary checks protects both the interface and future storage changes.
+
+For a demo using a JSON file store, keep persistence details behind the same service interface. The request and response contract should remain the same whether the local adapter writes a file or a production adapter talks to a database.
+
+## Keep the contract useful
+
+A good contract answers three questions: what can I send, what will I receive, and what should I do when it fails? Write down those answers in plain language, then let the implementation enforce them. That is enough structure to help a small team move without turning documentation into a second product.
