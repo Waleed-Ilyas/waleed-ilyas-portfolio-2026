@@ -7,10 +7,20 @@ export const categories = [
 ] as const;
 export type Category = (typeof categories)[number];
 
+export const featuredSlugs = [
+  "taskflow",
+  "socialsphere",
+  "eduvault",
+  "solmint",
+  "solswap",
+  "solgov",
+] as const;
+
 export const projects = [
   {
     name: "DevBlog Pro",
     slug: "devblog-pro",
+    repoUrl: "https://github.com/Waleed-Ilyas/waleed-devblog-pro",
     demoUrl: "https://waleed-devblog-pro.netlify.app",
     port: 3002,
     type: "Editorial platform · independent showcase",
@@ -31,6 +41,7 @@ export const projects = [
   {
     name: "ChatVerse",
     slug: "chatverse",
+    repoUrl: "https://github.com/Waleed-Ilyas/waleed-chatverse",
     demoUrl: "https://waleed-chatverse.netlify.app",
     port: 3003,
     type: "Messaging interface · local prototype",
@@ -50,6 +61,7 @@ export const projects = [
   {
     name: "AdminX",
     slug: "adminx-dashboard",
+    repoUrl: "https://github.com/Waleed-Ilyas/waleed-adminx-dashboard",
     demoUrl: "https://waleed-adminx-dashboard.netlify.app",
     port: 3001,
     type: "Admin workspace · independent showcase",
@@ -69,6 +81,7 @@ export const projects = [
   {
     name: "TaskFlow",
     slug: "taskflow",
+    repoUrl: "https://github.com/Waleed-Ilyas/waleed-taskflow",
     demoUrl: "https://waleed-taskflow.netlify.app",
     port: 3004,
     type: "Project planning · local prototype",
@@ -88,6 +101,7 @@ export const projects = [
   {
     name: "SocialSphere",
     slug: "socialsphere",
+    repoUrl: "https://github.com/Waleed-Ilyas/waleed-socialsphere",
     demoUrl: "https://waleed-socialsphere.netlify.app",
     port: 3005,
     type: "Community feed · local prototype",
@@ -107,6 +121,7 @@ export const projects = [
   {
     name: "EduVault",
     slug: "eduvault",
+    repoUrl: "https://github.com/Waleed-Ilyas/waleed-eduvault-lms",
     demoUrl: "https://waleed-eduvault-lms.netlify.app",
     port: 3006,
     type: "Learning platform · local prototype",
@@ -126,6 +141,7 @@ export const projects = [
   {
     name: "HireHub",
     slug: "hirehub",
+    repoUrl: "https://github.com/Waleed-Ilyas/waleed-hirehub-jobs",
     demoUrl: "https://waleed-hirehub-jobs.netlify.app",
     port: 3007,
     type: "Job discovery · local prototype",
@@ -145,6 +161,7 @@ export const projects = [
   {
     name: "CollabBoard",
     slug: "collabboard",
+    repoUrl: "https://github.com/Waleed-Ilyas/waleed-collabboard",
     demoUrl: "https://cheery-alpaca-b9a5f1.netlify.app",
     port: 3008,
     type: "Canvas whiteboard · local prototype",
@@ -163,6 +180,7 @@ export const projects = [
   {
     name: "MetricsPro",
     slug: "metricspro",
+    repoUrl: "https://github.com/Waleed-Ilyas/waleed-metricspro-saas",
     demoUrl: "https://waleed-metricspro-saas.netlify.app",
     port: 3009,
     type: "Analytics workspace · local prototype",
@@ -182,6 +200,7 @@ export const projects = [
   {
     name: "SolMint",
     slug: "solmint",
+    repoUrl: "https://github.com/Waleed-Ilyas/waleed-solmint-nft",
     demoUrl: "https://waleed-solmint-nft.netlify.app",
     port: 3010,
     type: "Digital art marketplace · local prototype",
@@ -196,11 +215,12 @@ export const projects = [
       "Responsive marketplace layout",
     ],
     boundary:
-      "No wallet, NFT metadata upload, marketplace program, auction, or Solana RPC is connected. Items are not minted or for sale.",
+      "The web demo is UI-only. Its repository also contains an Anchor program source and localnet test suite; no program deployment, wallet connection, RPC, metadata service, or live mint flow is presented here.",
   },
   {
     name: "SolSwap",
     slug: "solswap",
+    repoUrl: "https://github.com/Waleed-Ilyas/waleed-soldex",
     demoUrl: "https://waleed-soldex.netlify.app",
     port: 3011,
     type: "Token exchange · local prototype",
@@ -215,11 +235,12 @@ export const projects = [
       "Responsive market overview",
     ],
     boundary:
-      "Token values are static examples. Wallets, RPC, an AMM, deposits, swaps, and real transaction history are not connected.",
+      "The web demo is UI-only. Its repository also contains an Anchor program source and localnet test suite; no program deployment, wallet connection, RPC, pool, or live swap flow is presented here.",
   },
   {
     name: "SolGov",
     slug: "solgov",
+    repoUrl: "https://github.com/Waleed-Ilyas/waleed-solgov-dao",
     demoUrl: "https://waleed-solgov-dao.netlify.app",
     port: 3012,
     type: "Governance workspace · local prototype",
@@ -234,6 +255,6 @@ export const projects = [
       "Add local discussion notes",
     ],
     boundary:
-      "No DAO, wallet, SPL Governance, treasury, or Solana program is connected. Votes have no governance effect.",
+      "The web demo is UI-only. Its repository also contains an Anchor program source and localnet test suite; no program deployment, wallet connection, RPC, DAO, or live governance action is presented here.",
   },
 ] as const;

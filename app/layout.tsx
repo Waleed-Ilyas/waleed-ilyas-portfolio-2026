@@ -1,18 +1,35 @@
 ﻿import type { Metadata, Viewport } from "next";
-import { Manrope } from "next/font/google";
+import { Geist_Mono, Inter, Sora } from "next/font/google";
 import Script from "next/script";
 import { SiteEffects } from "@/components/site-effects";
 import { ScrollReveals } from "@/components/scroll-reveals";
 import "./globals.css";
 
-const manrope = Manrope({ subsets: ["latin"], display: "swap", variable: "--font-manrope" });
+const display = Sora({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-display",
+  weight: ["400", "600"],
+});
+const body = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-body",
+  weight: ["400", "600"],
+});
+const mono = Geist_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-mono",
+  weight: ["400", "500"],
+});
 
 export const metadata: Metadata = {
-  title: "Waleed Ilyas | Full Stack Engineer · MERN, Next.js & Solana",
+  title: "Waleed Ilyas | Full Stack Developer · MERN & Solana",
   description:
-    "Waleed Ilyas builds thoughtful full-stack products across MERN, Next.js, and Solana. Explore selected project showcases, experience, and technical skills.",
+    "Waleed Ilyas is a Full Stack Developer with 3+ years of experience across MERN, Next.js, and Solana. Explore selected independent showcases, experience, and skills.",
   openGraph: {
-    title: "Waleed Ilyas | Full Stack Engineer",
+    title: "Waleed Ilyas | Full Stack Developer",
     description: "MERN, Next.js, and Solana products built from API to interface.",
     type: "website",
   },
@@ -29,7 +46,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={manrope.variable}>
+    <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <body>
         <SiteEffects />
         <ScrollReveals />

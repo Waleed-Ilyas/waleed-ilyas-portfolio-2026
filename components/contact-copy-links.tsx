@@ -9,13 +9,6 @@ const contacts = [
     icon: "mail",
   },
   {
-    label: "PHONE",
-    value: "+92 317 606 3654",
-    copyValue: "+923176063654",
-    href: "tel:+923176063654",
-    icon: "phone",
-  },
-  {
     label: "LINKEDIN",
     value: "Connect with me",
     copyValue: "https://www.linkedin.com/in/waleed-ilyas-664839213",

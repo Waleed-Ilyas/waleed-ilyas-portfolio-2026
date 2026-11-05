@@ -5,7 +5,17 @@ import { useEffect, useRef, useState } from "react";
 
 const ContactForm = dynamic(
   () => import("@/components/contact-form").then((module) => module.ContactForm),
-  { ssr: false, loading: () => null },
+  {
+    ssr: false,
+    loading: () => (
+      <div className="form-skeleton" aria-label="Loading contact form">
+        <span />
+        <span />
+        <span />
+        <span />
+      </div>
+    ),
+  },
 );
 
 export function ContactFormLoader() {
@@ -37,8 +47,14 @@ export function ContactFormLoader() {
       ) : (
         <div className="contact-form-placeholder">
           <h3>Send a message</h3>
-          <p>The form will load when you reach this section.</p>
-          <a href="mailto:waleedilyas99@gmail.com">Email me directly</a>
+          <p>The contact form loads when this section is near.</p>
+          <div className="form-skeleton" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+            <span />
+          </div>
+          <a href="mailto:waleedilyas99@gmail.com">Or email me directly</a>
         </div>
       )}
     </div>

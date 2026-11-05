@@ -25,7 +25,7 @@ export default function OpenGraphImage() {
             display: "flex",
             alignItems: "center",
             gap: 16,
-            color: "#b8aeff",
+            color: "#a5f3d5",
             fontSize: 24,
             letterSpacing: 5,
           }}
@@ -37,14 +37,14 @@ export default function OpenGraphImage() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              border: "1px solid #8c7bff",
+              border: "1px solid #70dcb6",
               borderRadius: 12,
               fontSize: 19,
             }}
           >
             WI
           </span>
-          INDEPENDENT BUILDS
+          SELECTED SHOWCASES
         </div>
         <div
           style={{
@@ -57,7 +57,7 @@ export default function OpenGraphImage() {
         >
           Waleed Ilyas
         </div>
-        <div style={{ marginTop: 18, color: "#a99aff", fontSize: 38, lineHeight: 1.2 }}>
+        <div style={{ marginTop: 18, color: "#a5f3d5", fontSize: 38, lineHeight: 1.2 }}>
           Selected project showcases · built to explore
         </div>
         <div style={{ marginTop: 36, color: "#9696a8", fontSize: 20 }}>
@@ -79,7 +79,7 @@ export default function OpenGraphImage() {
           fontFamily: "monospace",
         }}
       >
-        350+
+        MERN
       </div>
     </div>,
     size,

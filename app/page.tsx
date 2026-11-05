@@ -19,9 +19,9 @@ export default function Home() {
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>
+      <SiteNavigation />
       <main id="main-content">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: structuredData }} />
-        <SiteNavigation />
 
         <section
           className="hero section-wrap"
@@ -41,13 +41,16 @@ export default function Home() {
               <span>from UI to chain.</span>
             </h1>
             <p className="hero-description">
-              I&apos;m Waleed Ilyas, a full-stack engineer working across MERN, Next.js, and Solana.
-              I build product experiences end to end, from data models and APIs to polished,
-              responsive interfaces.
+              I&apos;m Waleed Ilyas, a Full Stack Developer with 3+ years of experience across MERN,
+              Next.js, and Solana. I ship complete product experiences from data models and APIs to
+              polished interfaces and on-chain program source.
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href="#projects">
-                Explore my builds <Icon name="arrow" />
+                View featured projects <Icon name="arrow" />
+              </a>
+              <a className="button button-quiet" href="/resume/waleed-ilyas-resume.pdf" download>
+                Download résumé
               </a>
               <a className="button button-quiet" href="#contact">
                 Get in touch
@@ -72,9 +75,6 @@ export default function Home() {
               </a>
               <a href="mailto:waleedilyas99@gmail.com" aria-label="Email">
                 <Icon name="mail" />
-              </a>
-              <a href="tel:+923176063654" aria-label="Phone">
-                <Icon name="phone" />
               </a>
             </div>
           </div>
@@ -114,37 +114,117 @@ export default function Home() {
           </a>
         </section>
 
+        <section className="proof-strip section-wrap" aria-label="Primary engineering stack">
+          <span>PRODUCT ENGINEERING</span>
+          <strong>MERN</strong>
+          <i aria-hidden="true" />
+          <strong>Next.js</strong>
+          <i aria-hidden="true" />
+          <strong>TypeScript</strong>
+          <i aria-hidden="true" />
+          <strong>Solana · Anchor</strong>
+        </section>
+
+        <ProjectShowcase />
+
         <section
-          className="intro section-wrap"
-          id="about"
-          aria-labelledby="about-title"
+          className="skills-section section-wrap"
+          id="skills"
+          aria-labelledby="skills-title"
           data-scroll-reveal="up"
         >
           <div className="section-kicker">
-            <span>01</span>
-            <span>INTRODUCTION</span>
+            <span>02</span>
+            <span>TECHNOLOGY</span>
           </div>
-          <div className="intro-body">
-            <h2 id="about-title">
-              A digital craft, built
-              <br />
-              one <span>idea at a time.</span>
-            </h2>
-            <div className="intro-note">
+          <div className="section-heading">
+            <div>
+              <h2 id="skills-title">
+                Tools for the <span>whole product.</span>
+              </h2>
+              <p>From interface and API work to data, automation, and on-chain applications.</p>
+            </div>
+          </div>
+          <div className="skills-grid skills-prioritized">
+            <article className="skill-group skill-primary">
+              <span className="skill-label">01 / PRODUCT ENGINEERING</span>
+              <h3>Full Stack · MERN</h3>
+              <div className="skill-chips">
+                {[
+                  "React",
+                  "Next.js",
+                  "TypeScript",
+                  "Node.js",
+                  "Express",
+                  "MongoDB",
+                  "REST APIs",
+                  "PostgreSQL",
+                  "Prisma",
+                  "Tailwind CSS",
+                  "Redux Toolkit",
+                ].map((skill) => (
+                  <span key={skill}>{skill}</span>
+                ))}
+              </div>
+            </article>
+            <article className="skill-group skill-primary">
+              <span className="skill-label">02 / ON-CHAIN ENGINEERING</span>
+              <h3>Blockchain · Solana</h3>
+              <div className="skill-chips">
+                {["Solana", "Rust", "Anchor", "web3.js", "SPL Token", "Metaplex"].map((skill) => (
+                  <span key={skill}>{skill}</span>
+                ))}
+              </div>
+            </article>
+            <article className="skill-group">
+              <span className="skill-label">03 / SECONDARY</span>
+              <h3>Data &amp; automation</h3>
+              <p>Python · Pandas · NumPy · SQL · Power BI · n8n · GitHub Actions</p>
+            </article>
+          </div>
+        </section>
+
+        <section
+          className="solana-scope section-wrap"
+          aria-labelledby="solana-scope-title"
+          data-scroll-reveal="up"
+        >
+          <div className="section-kicker">
+            <span>03</span>
+            <span>SOLANA SCOPE</span>
+          </div>
+          <div className="solana-scope-card">
+            <div>
+              <h2 id="solana-scope-title">
+                Program source, <span>clearly scoped.</span>
+              </h2>
               <p>
-                I design and ship full-stack products across web applications and Solana interfaces,
-                with attention to clear architecture, dependable APIs, and thoughtful UI details.
+                SolMint, SolSwap, and SolGov each include Anchor program source and localnet tests
+                in their repositories. Their public web demos are UI-only: none has a deployed
+                program, connected wallet, or live chain actions.
               </p>
-              <p>
-                This portfolio pairs my professional experience with a carefully selected group of
-                independent, self-built showcases. Each demo documents its working interactions and
-                service boundaries clearly.
-              </p>
-              <p className="verification-note">
-                Available for remote full-time, contract, and freelance opportunities.
-              </p>
-              <a className="text-link" href="#experience">
-                Explore my experience <Icon name="arrow" />
+            </div>
+            <div className="solana-repo-links">
+              <a
+                href="https://github.com/Waleed-Ilyas/waleed-solmint-nft"
+                target="_blank"
+                rel="noreferrer"
+              >
+                SolMint source ?
+              </a>
+              <a
+                href="https://github.com/Waleed-Ilyas/waleed-soldex"
+                target="_blank"
+                rel="noreferrer"
+              >
+                SolSwap source ?
+              </a>
+              <a
+                href="https://github.com/Waleed-Ilyas/waleed-solgov-dao"
+                target="_blank"
+                rel="noreferrer"
+              >
+                SolGov source ?
               </a>
             </div>
           </div>
@@ -157,7 +237,7 @@ export default function Home() {
           data-scroll-reveal="up"
         >
           <div className="section-kicker">
-            <span>02</span>
+            <span>04</span>
             <span>EXPERIENCE</span>
           </div>
           <div className="section-heading">
@@ -254,219 +334,56 @@ export default function Home() {
               <strong>Bachelor of Computer Science (BSCS)</strong> · COMSATS University Islamabad ·
               2024
             </p>
+            <p className="education-program">Solana Developer Specialization Program, Edversity</p>
           </div>
         </section>
 
         <section
-          className="skills-section section-wrap"
-          id="skills"
-          aria-labelledby="skills-title"
+          className="intro section-wrap"
+          id="about"
+          aria-labelledby="about-title"
           data-scroll-reveal="up"
         >
           <div className="section-kicker">
-            <span>03</span>
-            <span>TECHNOLOGY</span>
+            <span>05</span>
+            <span>ABOUT</span>
           </div>
-          <div className="section-heading">
-            <div>
-              <h2 id="skills-title">
-                Tools for the <span>whole product.</span>
-              </h2>
-              <p>From interface and API work to data, automation, and on-chain applications.</p>
-            </div>
-          </div>
-          <div className="skills-grid">
-            <article className="skill-group">
-              <h3>Frontend</h3>
+          <div className="intro-body">
+            <h2 id="about-title">
+              A digital craft, built
+              <br />
+              one <span>idea at a time.</span>
+            </h2>
+            <div className="intro-note">
               <p>
-                React · Next.js · TypeScript · JavaScript · Tailwind CSS · Redux Toolkit · Material
-                UI · Three.js / React Three Fiber
+                I design and ship full-stack products across web applications and Solana interfaces,
+                with attention to clear architecture, dependable APIs, and thoughtful UI details.
               </p>
-            </article>
-            <article className="skill-group">
-              <h3>Backend &amp; data</h3>
               <p>
-                Node.js · Express · REST APIs · JWT / RBAC · Socket.io · MongoDB · Mongoose ·
-                PostgreSQL · Prisma
+                This portfolio pairs my professional experience with a carefully selected group of
+                independent, self-built showcases. Each demo documents its working interactions and
+                service boundaries clearly.
               </p>
-            </article>
-            <article className="skill-group">
-              <h3>Solana &amp; blockchain</h3>
-              <p>Solana · Anchor · Rust · web3.js · SPL Token · Metaplex</p>
-            </article>
-            <article className="skill-group">
-              <h3>Data &amp; analytics</h3>
-              <p>
-                Python · Pandas · NumPy · scikit-learn · SQL · Power BI · DAX · Power Query ·
-                Tableau
+              <p className="verification-note">
+                Available for remote full-time, contract, and freelance opportunities.
               </p>
-            </article>
-            <article className="skill-group">
-              <h3>Automation &amp; delivery</h3>
-              <p>
-                n8n · Google Sheets · Airtable · Notion · Slack integrations · Git · GitHub Actions
-                · Vercel · Postman
-              </p>
-            </article>
-          </div>
-          <div className="credentials-panel" aria-labelledby="credentials-title">
-            <div className="credential-earned">
-              <span className="credential-kicker" id="credentials-title">
-                COMPLETED PROGRAM
-              </span>
-              <div>
-                <h3>Solana Developer Specialization Program</h3>
-                <p>Edversity</p>
-              </div>
-              <span className="credential-seal" aria-hidden="true">
-                S
-              </span>
-            </div>
-            <div className="credential-recommendations">
-              <div>
-                <span className="credential-kicker">RECOMMENDED NEXT CREDENTIALS</span>
-                <p>Optional paths aligned with full-stack product development.</p>
-              </div>
-              <a
-                href="https://www.credly.com/org/facebook-blueprint/badge/meta-full-stack-engineer-certificate"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Meta Full-Stack Engineer Certificate <Icon name="arrow" />
-              </a>
-              <a
-                href="https://aws.amazon.com/certification/certified-developer-associate/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                AWS Certified Developer – Associate <Icon name="arrow" />
-              </a>
-              <a
-                href="https://learn.mongodb.com/pages/certification-program"
-                target="_blank"
-                rel="noreferrer"
-              >
-                MongoDB Associate Developer <Icon name="arrow" />
+              <a className="text-link" href="#experience">
+                Explore my experience <Icon name="arrow" />
               </a>
             </div>
-          </div>
-        </section>
-
-        <section
-          className="build-overview section-wrap"
-          aria-labelledby="build-overview-title"
-          data-scroll-reveal="left"
-        >
-          <div className="section-kicker">
-            <span>04</span>
-            <span>THE WORKSPACE</span>
-          </div>
-          <div className="overview-heading">
-            <div>
-              <h2 id="build-overview-title">
-                Selected work.
-                <br />
-                <span>Built to be explored.</span>
-              </h2>
-              <p>
-                More than 350 projects completed across my work. This gallery is a focused set of
-                new interactive showcases across full-stack products, dashboards, and Solana.
-              </p>
-            </div>
-            <div className="overview-orbit" aria-hidden="true">
-              <i />
-              <i />
-              <b>350+</b>
-            </div>
-          </div>
-          <div className="overview-stats">
-            <article>
-              <strong>350+</strong>
-              <span>projects completed</span>
-            </article>
-            <article>
-              <strong>3+ yrs</strong>
-              <span>full-stack experience</span>
-            </article>
-            <article>
-              <strong>MERN</strong>
-              <span>full-stack product work</span>
-            </article>
-            <article>
-              <strong>REMOTE</strong>
-              <span>open to global opportunities</span>
-            </article>
-          </div>
-          <div className="overview-stack">
-            <span>CORE STACK</span>
-            <div>
-              <b>TypeScript</b>
-              <b>Next.js 16</b>
-              <b>React 19</b>
-              <b>Responsive UI</b>
-              <b>Accessible patterns</b>
-            </div>
-          </div>
-        </section>
-
-        <ProjectShowcase />
-
-        <section
-          className="writing-section section-wrap"
-          aria-labelledby="writing-title"
-          data-scroll-reveal="up"
-        >
-          <div className="section-kicker">
-            <span>06</span>
-            <span>DEVBLOG PRO / CONTENT DEMO</span>
-          </div>
-          <div className="writing-heading">
-            <div>
-              <h2 id="writing-title">
-                Field notes from
-                <br />
-                <span>the demo workspace.</span>
-              </h2>
-              <p>
-                Three sample articles from DevBlog Pro, one of the independent portfolio builds.
-              </p>
-            </div>
-            <a className="text-link" href="https://waleed-devblog-pro.netlify.app">
-              Open DevBlog Pro <Icon name="arrow" />
-            </a>
-          </div>
-          <div className="writing-grid">
-            {[
-              [
-                "ENGINEERING",
-                "Building Scalable MERN Applications",
-                "Practical architecture patterns for growing products.",
-                "scalable-mern-patterns",
-              ],
-              [
-                "BLOCKCHAIN",
-                "A Safer Solana Program Workflow",
-                "From local tests to careful transaction design.",
-                "solana-anchor-workflows",
-              ],
-              [
-                "PRODUCT",
-                "Product Analytics That Answer Real Questions",
-                "Choose events that explain a user journey.",
-                "useful-product-analytics",
-              ],
-            ].map(([category, title, excerpt, slug], index) => (
-              <article className="writing-card" key={slug}>
-                <span className="writing-index">
-                  0{index + 1} / {category}
-                </span>
-                <h3>{title}</h3>
-                <p>{excerpt}</p>
-                <a href={`https://waleed-devblog-pro.netlify.app/blog/${slug}`}>
-                  Read sample article <Icon name="arrow" />
-                </a>
-              </article>
-            ))}
+            <figure className="about-portrait">
+              <Image
+                src="/images/waleed-profile-square.png"
+                alt="Waleed Ilyas, full stack and Solana developer"
+                width={800}
+                height={800}
+                sizes="(max-width: 640px) 70vw, (max-width: 900px) 42vw, 300px"
+                quality={82}
+              />
+              <figcaption>
+                WALEED ILYAS <span>· REMOTE</span>
+              </figcaption>
+            </figure>
           </div>
         </section>
 
@@ -477,7 +394,7 @@ export default function Home() {
           data-scroll-reveal="up"
         >
           <div className="section-kicker">
-            <span>07</span>
+            <span>06</span>
             <span>CONTACT</span>
           </div>
           <div className="contact-inner">
@@ -510,8 +427,7 @@ export default function Home() {
           </a>
           <nav className="footer-links" aria-label="Footer navigation">
             <a href="#about">About</a>
-            <a href="#projects">Demos</a>
-            <a href="#writing-title">Writing</a>
+            <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
           </nav>
           <div className="footer-socials" aria-label="Social links">
