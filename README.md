@@ -1,5 +1,9 @@
 # Waleed Ilyas — Full Stack Engineer
 
+## Live releases
+
+See [DEPLOYMENT_URLS.md](DEPLOYMENT_URLS.md) for the public portfolio and all twelve live demos with their source repositories.
+
 A portfolio for my full-stack work across MERN, Next.js, and Solana, with twelve new interactive showcase projects. The project cards use screenshots from these demo builds; the demos are independent portfolio work, not past client projects.
 
 ## Run the portfolio
