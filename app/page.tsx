@@ -5,7 +5,6 @@ import { HeroCanvasLoader } from "@/components/hero-canvas-loader";
 import { Icon } from "@/components/icon";
 import { ProjectShowcase } from "@/components/project-showcase";
 import { SiteNavigation } from "@/components/site-navigation";
-import Image from "next/image";
 
 const structuredData = JSON.stringify({
   "@context": "https://schema.org",
@@ -24,12 +23,7 @@ export default function Home() {
       <main id="main-content">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: structuredData }} />
 
-        <section
-          className="hero section-wrap"
-          id="home"
-          aria-labelledby="hero-title"
-          data-scroll-reveal="up"
-        >
+        <section className="hero section-wrap" id="home" aria-labelledby="hero-title">
           <div className="hero-glow" aria-hidden="true" />
           <div className="hero-grid" aria-hidden="true" />
           <div className="hero-copy">
@@ -80,36 +74,8 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-art" aria-hidden="true">
-            <div className="orbit orbit-one" />
-            <div className="orbit orbit-two" />
             <HeroCanvasLoader />
-            <div className="hero-cube">
-              <i className="cube-front">WI</i>
-              <i className="cube-back">JS</i>
-              <i className="cube-right">&lt;/&gt;</i>
-              <i className="cube-left">◉</i>
-              <i className="cube-top">✳</i>
-              <i className="cube-bottom">01</i>
-            </div>
-            <div className="hero-monogram">
-              WI<span>.</span>
-            </div>
-            <div className="art-caption">
-              <span>INDEPENDENT BUILDS</span>
-              <span>MERN · SOLANA</span>
-            </div>
           </div>
-          <figure className="hero-portrait">
-            <Image
-              src="/images/waleed-profile-square.png"
-              alt="Portrait of Waleed Ilyas"
-              width={800}
-              height={800}
-              sizes="(max-width: 640px) 142px, (max-width: 980px) 250px, 360px"
-              quality={85}
-              priority
-            />
-          </figure>
           <a className="scroll-cue" href="#about">
             <span className="scroll-line" /> Scroll to explore
           </a>
