@@ -2,7 +2,15 @@ import nextVitals from "eslint-config-next/core-web-vitals";
 
 const eslintConfig = [
   ...nextVitals,
-  { ignores: [".next/**", "node_modules/**", "projects/**/.next/**"] },
+  {
+    ignores: [
+      ".next/**",
+      "node_modules/**",
+      "projects/**/.next/**",
+      "**/.netlify/**",
+      "projects/**/public/_next/**",
+    ],
+  },
 ];
 
 export default eslintConfig;

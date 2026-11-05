@@ -13,7 +13,9 @@ export const metadata: Metadata = {
     description: "MERN, Next.js, and Solana products built from API to interface.",
     type: "website",
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://waleed-ilyas-portfolio-2026.netlify.app",
+  ),
   robots: { index: true, follow: true },
 };
 

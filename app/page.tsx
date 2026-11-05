@@ -398,7 +398,7 @@ export default function Home() {
                 Three sample articles from DevBlog Pro, one of the independent portfolio builds.
               </p>
             </div>
-            <a className="text-link" href="http://localhost:3002">
+            <a className="text-link" href="https://waleed-devblog-pro.netlify.app">
               Open DevBlog Pro <Icon name="arrow" />
             </a>
           </div>
@@ -429,7 +429,7 @@ export default function Home() {
                 </span>
                 <h3>{title}</h3>
                 <p>{excerpt}</p>
-                <a href={`http://localhost:3002/blog/${slug}`}>
+                <a href={`https://waleed-devblog-pro.netlify.app/blog/${slug}`}>
                   Read sample article <Icon name="arrow" />
                 </a>
               </article>

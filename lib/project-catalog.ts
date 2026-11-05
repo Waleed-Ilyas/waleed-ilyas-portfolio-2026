@@ -11,6 +11,7 @@ export const projects = [
   {
     name: "DevBlog Pro",
     slug: "devblog-pro",
+    demoUrl: "https://waleed-devblog-pro.netlify.app",
     port: 3002,
     type: "Editorial platform · independent showcase",
     category: "Web Development",
@@ -30,6 +31,7 @@ export const projects = [
   {
     name: "ChatVerse",
     slug: "chatverse",
+    demoUrl: "https://waleed-chatverse.netlify.app",
     port: 3003,
     type: "Messaging interface · local prototype",
     category: "Web Development",
@@ -48,6 +50,7 @@ export const projects = [
   {
     name: "AdminX",
     slug: "adminx-dashboard",
+    demoUrl: "https://waleed-adminx-dashboard.netlify.app",
     port: 3001,
     type: "Admin workspace · independent showcase",
     category: "Web Development",
@@ -66,6 +69,7 @@ export const projects = [
   {
     name: "TaskFlow",
     slug: "taskflow",
+    demoUrl: "https://waleed-taskflow.netlify.app",
     port: 3004,
     type: "Project planning · local prototype",
     category: "MERN Stack",
@@ -84,6 +88,7 @@ export const projects = [
   {
     name: "SocialSphere",
     slug: "socialsphere",
+    demoUrl: "https://waleed-socialsphere.netlify.app",
     port: 3005,
     type: "Community feed · local prototype",
     category: "MERN Stack",
@@ -102,6 +107,7 @@ export const projects = [
   {
     name: "EduVault",
     slug: "eduvault",
+    demoUrl: "https://waleed-eduvault-lms.netlify.app",
     port: 3006,
     type: "Learning platform · local prototype",
     category: "MERN Stack",
@@ -120,6 +126,7 @@ export const projects = [
   {
     name: "HireHub",
     slug: "hirehub",
+    demoUrl: "https://waleed-hirehub-jobs.netlify.app",
     port: 3007,
     type: "Job discovery · local prototype",
     category: "Full Stack",
@@ -138,6 +145,7 @@ export const projects = [
   {
     name: "CollabBoard",
     slug: "collabboard",
+    demoUrl: "https://cheery-alpaca-b9a5f1.netlify.app",
     port: 3008,
     type: "Canvas whiteboard · local prototype",
     category: "Full Stack",
@@ -155,6 +163,7 @@ export const projects = [
   {
     name: "MetricsPro",
     slug: "metricspro",
+    demoUrl: "https://waleed-metricspro-saas.netlify.app",
     port: 3009,
     type: "Analytics workspace · local prototype",
     category: "Full Stack",
@@ -173,6 +182,7 @@ export const projects = [
   {
     name: "SolMint",
     slug: "solmint",
+    demoUrl: "https://waleed-solmint-nft.netlify.app",
     port: 3010,
     type: "Digital art marketplace · local prototype",
     category: "Blockchain",
@@ -191,6 +201,7 @@ export const projects = [
   {
     name: "SolSwap",
     slug: "solswap",
+    demoUrl: "https://waleed-soldex.netlify.app",
     port: 3011,
     type: "Token exchange · local prototype",
     category: "Blockchain",
@@ -209,6 +220,7 @@ export const projects = [
   {
     name: "SolGov",
     slug: "solgov",
+    demoUrl: "https://waleed-solgov-dao.netlify.app",
     port: 3012,
     type: "Governance workspace · local prototype",
     category: "Blockchain",

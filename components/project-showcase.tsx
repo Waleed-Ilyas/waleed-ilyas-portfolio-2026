@@ -19,7 +19,7 @@ export function ProjectShowcase() {
           <h2 id="projects-title">
             The build list<span>.</span>
           </h2>
-          <p>Explore each local app, inspect its interactions, and review its boundaries.</p>
+            <p>Explore each live demo, inspect its interactions, and review its boundaries.</p>
         </div>
         <span className="project-count">
           12 <small>TOTAL BUILDS</small>
@@ -77,8 +77,8 @@ export function ProjectShowcase() {
                 Interactive portfolio demo · sample data
               </div>
               <div className="project-actions">
-                <a href={`http://localhost:${project.port}`} target="_blank" rel="noreferrer">
-                  Open local demo <Icon name="arrow" />
+                <a href={project.demoUrl} target="_blank" rel="noreferrer">
+                  Open live demo <Icon name="arrow" />
                 </a>
                 <details className="project-details">
                   <summary>Build details</summary>
