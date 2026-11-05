@@ -58,7 +58,7 @@ export default function OpenGraphImage() {
           Waleed Ilyas
         </div>
         <div style={{ marginTop: 18, color: "#a99aff", fontSize: 38, lineHeight: 1.2 }}>
-          12 project showcases · built to explore
+          Selected project showcases · built to explore
         </div>
         <div style={{ marginTop: 36, color: "#9696a8", fontSize: 20 }}>
           New portfolio projects · local demos
@@ -79,7 +79,7 @@ export default function OpenGraphImage() {
           fontFamily: "monospace",
         }}
       >
-        12
+        350+
       </div>
     </div>,
     size,

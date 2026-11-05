@@ -84,7 +84,7 @@ export default function Home() {
             <HeroCanvasLoader />
             <div className="hero-cube">
               <i className="cube-front">WI</i>
-              <i className="cube-back">12</i>
+              <i className="cube-back">JS</i>
               <i className="cube-right">&lt;/&gt;</i>
               <i className="cube-left">◉</i>
               <i className="cube-top">✳</i>
@@ -95,17 +95,18 @@ export default function Home() {
             </div>
             <div className="art-caption">
               <span>INDEPENDENT BUILDS</span>
-              <span>01 — 12</span>
+              <span>MERN · SOLANA</span>
             </div>
           </div>
           <figure className="hero-portrait">
             <Image
-              src="/images/waleed-profile.jpg"
+              src="/images/waleed-profile-square.png"
               alt="Portrait of Waleed Ilyas"
-              width={1068}
-              height={1600}
-              sizes="(max-width: 640px) 160px, (max-width: 980px) 220px, 300px"
+              width={800}
+              height={800}
+              sizes="(max-width: 640px) 142px, (max-width: 980px) 250px, 360px"
               quality={85}
+              priority
             />
           </figure>
           <a className="scroll-cue" href="#about">
@@ -135,13 +136,12 @@ export default function Home() {
                 with attention to clear architecture, dependable APIs, and thoughtful UI details.
               </p>
               <p>
-                Alongside my professional experience, this portfolio presents twelve new,
-                independently built product demos. Each one documents its working interactions and
-                the services it does not connect to.
+                This portfolio pairs my professional experience with a carefully selected group of
+                independent, self-built showcases. Each demo documents its working interactions and
+                service boundaries clearly.
               </p>
               <p className="verification-note">
-                Based in Pakistan (UTC+5), I&apos;m open to remote full-time, contract, and
-                freelance opportunities.
+                Available for remote full-time, contract, and freelance opportunities.
               </p>
               <a className="text-link" href="#experience">
                 Explore my experience <Icon name="arrow" />
@@ -175,7 +175,7 @@ export default function Home() {
             <article className="experience-entry">
               <div className="experience-meta">
                 <span>2024 — 2026</span>
-                <span>Pakistan · Remote</span>
+                <span>Remote</span>
               </div>
               <div className="experience-detail">
                 <p className="experience-company">Buggcy</p>
@@ -214,7 +214,7 @@ export default function Home() {
             <article className="experience-entry">
               <div className="experience-meta">
                 <span>2022 — 2024</span>
-                <span>Pakistan</span>
+                <span>Remote</span>
               </div>
               <div className="experience-detail">
                 <p className="experience-company">Invex Tech</p>
@@ -309,13 +309,46 @@ export default function Home() {
               </p>
             </article>
           </div>
-          <div className="certification-line">
-            <span>SELECTED CERTIFICATIONS</span>
-            <p>
-              IBM Data Analyst Professional Certificate · IBM Data Analysis and Visualization
-              Foundations · Microsoft Power BI Data Analyst Specialization · Google Business
-              Intelligence Specialization · Google Data Analytics Certificate
-            </p>
+          <div className="credentials-panel" aria-labelledby="credentials-title">
+            <div className="credential-earned">
+              <span className="credential-kicker" id="credentials-title">
+                COMPLETED PROGRAM
+              </span>
+              <div>
+                <h3>Solana Developer Specialization Program</h3>
+                <p>Edversity</p>
+              </div>
+              <span className="credential-seal" aria-hidden="true">
+                S
+              </span>
+            </div>
+            <div className="credential-recommendations">
+              <div>
+                <span className="credential-kicker">RECOMMENDED NEXT CREDENTIALS</span>
+                <p>Optional paths aligned with full-stack product development.</p>
+              </div>
+              <a
+                href="https://www.credly.com/org/facebook-blueprint/badge/meta-full-stack-engineer-certificate"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Meta Full-Stack Engineer Certificate <Icon name="arrow" />
+              </a>
+              <a
+                href="https://aws.amazon.com/certification/certified-developer-associate/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                AWS Certified Developer – Associate <Icon name="arrow" />
+              </a>
+              <a
+                href="https://learn.mongodb.com/pages/certification-program"
+                target="_blank"
+                rel="noreferrer"
+              >
+                MongoDB Associate Developer <Icon name="arrow" />
+              </a>
+            </div>
           </div>
         </section>
 
@@ -331,37 +364,37 @@ export default function Home() {
           <div className="overview-heading">
             <div>
               <h2 id="build-overview-title">
-                Twelve ideas.
+                Selected work.
                 <br />
                 <span>Built to be explored.</span>
               </h2>
               <p>
-                Twelve original portfolio builds across web products, dashboards, and Solana
-                interfaces. Explore each project and its clearly documented demo scope.
+                More than 350 projects completed across my work. This gallery is a focused set of
+                new interactive showcases across full-stack products, dashboards, and Solana.
               </p>
             </div>
             <div className="overview-orbit" aria-hidden="true">
               <i />
               <i />
-              <b>12</b>
+              <b>350+</b>
             </div>
           </div>
           <div className="overview-stats">
             <article>
-              <strong>12</strong>
-              <span>standalone workspaces</span>
+              <strong>350+</strong>
+              <span>projects completed</span>
             </article>
             <article>
               <strong>3+ yrs</strong>
               <span>full-stack experience</span>
             </article>
             <article>
-              <strong>12</strong>
-              <span>independent demos</span>
+              <strong>MERN</strong>
+              <span>full-stack product work</span>
             </article>
             <article>
-              <strong>UTC+5</strong>
-              <span>Pakistan · remote-ready</span>
+              <strong>REMOTE</strong>
+              <span>open to global opportunities</span>
             </article>
           </div>
           <div className="overview-stack">

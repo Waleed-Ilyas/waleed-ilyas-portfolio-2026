@@ -12,18 +12,17 @@ export function ProjectShowcase() {
     >
       <div className="section-kicker">
         <span>05</span>
-        <span>PROJECT SHOWCASES</span>
+        <span>SELECTED SHOWCASES</span>
       </div>
       <div className="section-heading">
         <div>
           <h2 id="projects-title">
             The build list<span>.</span>
           </h2>
-            <p>Explore each live demo, inspect its interactions, and review its boundaries.</p>
+          <p>
+            Explore selected builds, inspect their interactions, and review each demo&apos;s scope.
+          </p>
         </div>
-        <span className="project-count">
-          12 <small>TOTAL BUILDS</small>
-        </span>
       </div>
       <div className="filter-row" role="radiogroup" aria-label="Filter projects by category">
         {categories.map((category) => {
@@ -102,9 +101,9 @@ export function ProjectShowcase() {
         ))}
       </div>
       <p className="project-disclaimer">
-        These twelve projects are new independent portfolio builds. Each card shows the actual demo
-        interface; sample records and any backend or blockchain limitations are documented in its
-        project workspace.
+        The projects in this gallery are new, independent portfolio builds created to demonstrate
+        product thinking and technical range. Each card shows its actual demo interface; sample
+        records and backend or blockchain limitations are documented in its workspace.
       </p>
     </section>
   );

@@ -1,13 +1,16 @@
 ﻿import type { Metadata, Viewport } from "next";
+import { Manrope } from "next/font/google";
 import Script from "next/script";
 import { SiteEffects } from "@/components/site-effects";
 import { ScrollReveals } from "@/components/scroll-reveals";
 import "./globals.css";
 
+const manrope = Manrope({ subsets: ["latin"], display: "swap", variable: "--font-manrope" });
+
 export const metadata: Metadata = {
   title: "Waleed Ilyas | Full Stack Engineer · MERN, Next.js & Solana",
   description:
-    "Full Stack Engineer with 3+ years of experience building MERN, Next.js, and Solana products. Explore twelve original web, product, and blockchain demos.",
+    "Waleed Ilyas builds thoughtful full-stack products across MERN, Next.js, and Solana. Explore selected project showcases, experience, and technical skills.",
   openGraph: {
     title: "Waleed Ilyas | Full Stack Engineer",
     description: "MERN, Next.js, and Solana products built from API to interface.",
@@ -26,7 +29,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={manrope.variable}>
       <body>
         <SiteEffects />
         <ScrollReveals />

@@ -17,3 +17,10 @@ projects/portfolio-site/next.config.mjs
 projects/portfolio-site/next-env.d.ts
 EXECUTION-PLAN.md
 portfolio-headless-review.png
+.portfolio-browser-check.cjs
+.portfolio-visual-check.png
+.portfolio-skills-review.png
+.portfolio-mobile-review.png
+portfolio-hero-review.png
+.tmp-chrome-profile/
+.tmp-chrome-profile-final/

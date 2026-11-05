@@ -1,6 +1,6 @@
 # Live portfolio and showcase projects
 
-The portfolio and twelve showcase demos are published on Netlify Free. The demos are newly built portfolio showcases; their sample data and integration boundaries are documented in each repository.
+The portfolio and its showcase demos are published on Netlify Free. The demos are newly built portfolio showcases; their sample data and integration boundaries are documented in each repository.
 
 ## Portfolio
 
