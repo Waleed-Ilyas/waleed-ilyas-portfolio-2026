@@ -34,6 +34,23 @@ export function ScrollReveals() {
             },
           );
         });
+        gsap.utils.toArray<HTMLElement>("[data-scroll-stagger]").forEach((container) => {
+          const items = container.querySelectorAll<HTMLElement>("[data-reveal-item]");
+          if (!items.length) return;
+          gsap.fromTo(
+            items,
+            { autoAlpha: 0, y: 18, scale: 0.985 },
+            {
+              autoAlpha: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.52,
+              stagger: 0.075,
+              ease: "power2.out",
+              scrollTrigger: { trigger: container, start: "top 82%", once: true },
+            },
+          );
+        });
       });
     };
 

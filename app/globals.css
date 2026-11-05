@@ -2400,20 +2400,41 @@ li {
 }
 .about-portrait {
   position: relative;
+  isolation: isolate;
   margin: 0;
   padding: 9px;
   border: 1px solid rgba(119, 224, 184, 0.3);
   border-radius: 24px;
   background: linear-gradient(145deg, rgba(119, 224, 184, 0.18), rgba(255, 255, 255, 0.025));
   box-shadow: 0 22px 55px rgba(0, 0, 0, 0.28);
-  transform: perspective(1000px) rotateY(-2deg);
+  transform: perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, -2deg));
   transition:
-    transform 320ms ease,
+    transform 220ms ease-out,
     box-shadow 320ms ease;
+  will-change: transform;
+}
+.about-portrait::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 9px;
+  border-radius: 17px;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    rgba(196, 255, 228, 0.24),
+    transparent 48%
+  );
+  transition: opacity 220ms ease;
 }
 .about-portrait:hover {
-  transform: perspective(1000px) rotateY(1deg) translateY(-3px);
+  transform: perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 1deg))
+    translateY(-3px);
   box-shadow: 0 26px 65px rgba(0, 0, 0, 0.38);
+}
+.about-portrait:hover::before {
+  opacity: 1;
 }
 .about-portrait img {
   display: block;
@@ -2425,6 +2446,8 @@ li {
   border-radius: 17px;
 }
 .about-portrait figcaption {
+  position: relative;
+  z-index: 2;
   padding: 13px 6px 4px;
   color: #d3f8e9;
   font: 500 0.75rem var(--mono);
@@ -2517,6 +2540,23 @@ li {
 .featured-project-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
+}
+.project-card {
+  transform-style: preserve-3d;
+  transition:
+    transform 260ms ease,
+    border-color 260ms ease,
+    box-shadow 260ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover {
+    transform: perspective(900px) rotateX(1deg) rotateY(-1deg) translateY(-4px);
+    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.22);
+  }
+}
+.hero-canvas-slot canvas {
+  opacity: 0.9;
+  mask-image: radial-gradient(ellipse at center, #000 42%, transparent 76%);
 }
 .project-visual {
   height: clamp(200px, 24vw, 310px);
@@ -2783,6 +2823,15 @@ li {
 @media (prefers-reduced-motion: reduce) {
   .about-portrait,
   .about-portrait:hover {
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+  .about-portrait::before {
+    display: none;
+  }
+  .project-card,
+  .project-card:hover {
     transform: none;
     transition: none;
   }

@@ -1,4 +1,5 @@
-﻿import { ContactCopyLinks } from "@/components/contact-copy-links";
+﻿import { AboutPortrait } from "@/components/about-portrait";
+import { ContactCopyLinks } from "@/components/contact-copy-links";
 import { ContactFormLoader } from "@/components/contact-form-loader";
 import { HeroCanvasLoader } from "@/components/hero-canvas-loader";
 import { Icon } from "@/components/icon";
@@ -371,19 +372,7 @@ export default function Home() {
                 Explore my experience <Icon name="arrow" />
               </a>
             </div>
-            <figure className="about-portrait">
-              <Image
-                src="/images/waleed-profile-square.png"
-                alt="Waleed Ilyas, full stack and Solana developer"
-                width={800}
-                height={800}
-                sizes="(max-width: 640px) 70vw, (max-width: 900px) 42vw, 300px"
-                quality={82}
-              />
-              <figcaption>
-                WALEED ILYAS <span>· REMOTE</span>
-              </figcaption>
-            </figure>
+            <AboutPortrait />
           </div>
         </section>
 

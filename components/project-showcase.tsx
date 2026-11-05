@@ -4,7 +4,7 @@ import Image from "next/image";
 
 function ProjectCard({ project, index }: { project: (typeof projects)[number]; index: number }) {
   return (
-    <article className="project-card" data-category={project.category}>
+    <article className="project-card" data-category={project.category} data-reveal-item>
       <div className={`project-visual visual-${(index % 4) + 1}`}>
         <Image
           className="project-screenshot"
@@ -116,7 +116,7 @@ export function ProjectShowcase() {
           );
         })}
       </div>
-      <div className="project-grid featured-project-grid">
+      <div className="project-grid featured-project-grid" data-scroll-stagger>
         {featured.map((project) => (
           <ProjectCard key={project.slug} project={project} index={projects.indexOf(project)} />
         ))}
