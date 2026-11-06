@@ -14,10 +14,10 @@ type ConnectionHints = Navigator & {
   deviceMemory?: number;
 };
 
-const layers = [
+const stages = [
   ["01", "UI", "React / Next.js"],
   ["02", "API", "Node / Express"],
-  ["03", "DATABASE", "MongoDB / SQL"],
+  ["03", "DATA", "MongoDB / SQL"],
   ["04", "CHAIN", "Solana / Anchor"],
 ];
 
@@ -40,30 +40,23 @@ class SceneErrorBoundary extends Component<{
   }
 }
 
-function StaticStack({ enhanced }: { enhanced: boolean }) {
+function StaticEarth({ enhanced }: { enhanced: boolean }) {
   return (
     <div
-      className={`hero-static-stack${enhanced ? " hero-static-stack-enhanced" : ""}`}
+      className={`hero-static-earth${enhanced ? " hero-static-earth-enhanced" : ""}`}
       aria-hidden="true"
     >
-      <div className="static-stack-halo" />
-      {layers.map(([number, name, detail], index) => (
-        <div className={`static-stack-layer static-stack-layer-${index + 1}`} key={name}>
-          <span className="static-layer-number">{number}</span>
-          <span className="static-layer-copy">
-            <strong>{name}</strong>
-            <small>{detail}</small>
-          </span>
-          <span className="static-layer-port" />
-        </div>
-      ))}
-      <div className="static-particle-stream" />
-      <div className="static-chain-links">
-        <i />
-        <i />
-        <i />
+      <div className="static-earth-halo" />
+      <div className="static-earth-orbit static-earth-orbit-one" />
+      <div className="static-earth-orbit static-earth-orbit-two" />
+      <div className="static-earth-sphere">
+        <div className="static-earth-grid" />
+        <div className="static-earth-land" />
+        <i className="static-earth-node static-earth-node-one" />
+        <i className="static-earth-node static-earth-node-two" />
+        <i className="static-earth-node static-earth-node-three" />
+        <i className="static-earth-node static-earth-node-four" />
       </div>
-      <span className="static-stack-caption">ONE PRODUCT / EVERY LAYER</span>
     </div>
   );
 }
@@ -82,6 +75,17 @@ export function HeroCanvasLoader() {
     );
     const connection = navigator as ConnectionHints;
     const element = document.querySelector<HTMLElement>(".hero-art");
+    const hero = element?.closest<HTMLElement>(".hero");
+    const grid = hero?.querySelector<HTMLElement>(".hero-grid");
+
+    const setGridHover = (event: PointerEvent) => {
+      if (!grid || event.pointerType === "touch") return;
+      const bounds = grid.getBoundingClientRect();
+      grid.style.setProperty("--grid-pointer-x", `${event.clientX - bounds.left}px`);
+      grid.style.setProperty("--grid-pointer-y", `${event.clientY - bounds.top}px`);
+      grid.style.setProperty("--grid-pointer-opacity", "1");
+    };
+    const resetGridHover = () => grid?.style.setProperty("--grid-pointer-opacity", "0");
 
     const checkSupport = () => {
       const lowMemory = typeof connection.deviceMemory === "number" && connection.deviceMemory <= 4;
@@ -109,6 +113,8 @@ export function HeroCanvasLoader() {
     const visibility = () => setTabVisible(document.visibilityState === "visible");
     checkSupport();
     visibility();
+    hero?.addEventListener("pointermove", setGridHover, { passive: true });
+    hero?.addEventListener("pointerleave", resetGridHover);
     pointerPreference.addEventListener("change", checkSupport);
     motionPreference.addEventListener("change", checkSupport);
     document.addEventListener("visibilitychange", visibility);
@@ -139,6 +145,8 @@ export function HeroCanvasLoader() {
       window.cancelAnimationFrame(secondFrame);
       window.clearTimeout(readyTimeout);
       observer?.disconnect();
+      hero?.removeEventListener("pointermove", setGridHover);
+      hero?.removeEventListener("pointerleave", resetGridHover);
       pointerPreference.removeEventListener("change", checkSupport);
       motionPreference.removeEventListener("change", checkSupport);
       document.removeEventListener("visibilitychange", visibility);
@@ -149,7 +157,16 @@ export function HeroCanvasLoader() {
 
   return (
     <>
-      <StaticStack enhanced={showCanvas} />
+      <StaticEarth enhanced={showCanvas} />
+      <div className="hero-stage-overlay" aria-hidden="true">
+        {stages.map(([number, name, detail], index) => (
+          <span className={`hero-stage-label hero-stage-label-${index + 1}`} key={name}>
+            <small>{number}</small>
+            <strong>{name}</strong>
+            <span>{detail}</span>
+          </span>
+        ))}
+      </div>
       {showCanvas && (
         <SceneErrorBoundary onError={() => setCanvasFailed(true)}>
           <Suspense fallback={null}>

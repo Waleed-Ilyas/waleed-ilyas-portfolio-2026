@@ -1,0 +1,11 @@
+const fs=require('node:fs');
+const cp=require('node:child_process');
+const git='D:\\Git\\cmd\\git.exe';
+let content=cp.execFileSync(git,['show','HEAD:app/page.tsx'],{encoding:'utf8'});
+content=content.replace('import { ContactCopyLinks } from "@/components/contact-copy-links";','import { AboutPortrait } from "@/components/about-portrait";\nimport { ContactCopyLinks } from "@/components/contact-copy-links";');
+const start=content.indexOf('            <figure className="about-portrait">');
+const endText='            </figure>';
+const end=content.indexOf(endText,start)+endText.length;
+if(start<0||end<endText.length) throw new Error('Portrait block not found in baseline');
+content=content.slice(0,start)+'            <AboutPortrait />'+content.slice(end);
+fs.writeFileSync('app/page.tsx',content,'utf8');

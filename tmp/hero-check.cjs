@@ -1,0 +1,20 @@
+const fs = require('node:fs');
+(async () => {
+ const target = await (await fetch('http://127.0.0.1:9222/json/new?http://127.0.0.1:4200',{method:'PUT'})).json();
+ const ws = new WebSocket(target.webSocketDebuggerUrl); let seq=0; const waiting=new Map(); const exceptions=[];
+ ws.addEventListener('message',e=>{const m=JSON.parse(e.data);if(m.id&&waiting.has(m.id)){const done=waiting.get(m.id);waiting.delete(m.id);done(m);} else if(m.method==='Runtime.exceptionThrown') exceptions.push(m.params.exceptionDetails.text);});
+ await new Promise(resolve=>ws.addEventListener('open',resolve,{once:true}));
+ const call=(method,params={})=>new Promise((resolve,reject)=>{const id=++seq;waiting.set(id,m=>m.error?reject(new Error(m.error.message)):resolve(m.result));ws.send(JSON.stringify({id,method,params}));});
+ const evaluate=async expression=>(await call('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true})).result.value;
+ await call('Page.enable'); await call('Runtime.enable');
+ await call('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false});
+ await call('Page.navigate',{url:'http://127.0.0.1:4200'}); await new Promise(r=>setTimeout(r,2200));
+ console.log('desktop static',await evaluate('JSON.stringify({title:document.title,h1:document.querySelector("h1")?.innerText,heroPortrait:document.querySelectorAll(".hero-portrait").length,aboutPhoto:!!document.querySelector(".about-portrait img"),layers:document.querySelectorAll(".static-stack-layer").length,canvas:document.querySelectorAll(".hero-canvas-slot canvas").length,overflow:document.documentElement.scrollWidth>innerWidth,viewport:innerWidth})'));
+ await call('Input.dispatchMouseEvent',{type:'mouseMoved',x:1000,y:460}); await new Promise(r=>setTimeout(r,2300));
+ console.log('desktop enhanced',await evaluate('JSON.stringify({canvas:document.querySelectorAll(".hero-canvas-slot canvas").length,webgl:!!document.querySelector(".hero-canvas-slot canvas")?.getContext("webgl2"),staticOpacity:getComputedStyle(document.querySelector(".hero-static-stack")).opacity,errors:document.querySelectorAll("nextjs-portal").length})'));
+ let shot=await call('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});fs.writeFileSync('D:/Web Development Portfolio/tmp/ui-to-chain-desktop.png',Buffer.from(shot.data,'base64'));
+ await call('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});await new Promise(r=>setTimeout(r,700));
+ console.log('mobile fallback',await evaluate('JSON.stringify({viewport:innerWidth,scroll:document.documentElement.scrollWidth,canvas:document.querySelectorAll(".hero-canvas-slot canvas").length,art:document.querySelector(".hero-art")?.getBoundingClientRect().toJSON(),heroPortrait:document.querySelectorAll(".hero-portrait").length,photoInAbout:!!document.querySelector(".about-portrait img")})'));
+ shot=await call('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});fs.writeFileSync('D:/Web Development Portfolio/tmp/ui-to-chain-mobile.png',Buffer.from(shot.data,'base64'));
+ console.log('runtime exceptions',JSON.stringify(exceptions)); await call('Target.closeTarget',{targetId:target.id}); ws.close();
+})();

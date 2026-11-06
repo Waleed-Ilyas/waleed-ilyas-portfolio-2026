@@ -1,0 +1,20 @@
+const fs = require('node:fs');
+(async () => {
+ const pages = await (await fetch('http://127.0.0.1:9333/json/list')).json();
+ const target = pages.find(x => x.type === 'page' && x.url.includes(':4173'));
+ const ws = new WebSocket(target.webSocketDebuggerUrl);
+ let id = 0; const waiters = new Map();
+ ws.addEventListener('message', e => { const m=JSON.parse(e.data); if(m.id && waiters.has(m.id)){const done=waiters.get(m.id);waiters.delete(m.id);done(m);}});
+ await new Promise(resolve => ws.addEventListener('open',resolve,{once:true}));
+ const call = (method,params={}) => new Promise(resolve => { const n=++id;waiters.set(n,resolve);ws.send(JSON.stringify({id:n,method,params})); });
+ const evaluate = async expression => (await call('Runtime.evaluate',{expression,returnByValue:true})).result.result.value;
+ await call('Page.enable'); await call('Runtime.enable');
+ await call('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false});
+ await new Promise(resolve=>setTimeout(resolve,1400));
+ console.log('initial',await evaluate('JSON.stringify({title:document.title,canvas:document.querySelectorAll(".hero-canvas-slot canvas").length,heroCube:getComputedStyle(document.querySelector(".hero-cube")).animationName,reduced:matchMedia("(prefers-reduced-motion: reduce)").matches,cardCount:document.querySelectorAll(".project-card").length})'));
+ console.log('portrait interaction',await evaluate('(()=>{const x=document.querySelector(".about-portrait");x.dispatchEvent(new PointerEvent("pointermove",{pointerType:"mouse",clientX:x.getBoundingClientRect().left+x.clientWidth*.8,clientY:x.getBoundingClientRect().top+x.clientHeight*.2,bubbles:true}));return JSON.stringify({tiltX:x.style.getPropertyValue("--tilt-x"),tiltY:x.style.getPropertyValue("--tilt-y"),spot:x.style.getPropertyValue("--spot-x")})})()'));
+ await new Promise(resolve=>setTimeout(resolve,900));
+ const shot=await call('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});fs.writeFileSync('D:/Web Development Portfolio/tmp/animation-review.png',Buffer.from(shot.result.data,'base64'));
+ console.log('post-move',await evaluate('JSON.stringify({canvas:document.querySelectorAll(".hero-canvas-slot canvas").length,overflow:document.documentElement.scrollWidth>innerWidth})'));
+ ws.close();
+})();
